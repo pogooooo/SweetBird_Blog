@@ -1,0 +1,133 @@
+.Main {
+    background-image: linear-gradient(to bottom right, #FF97EE, #bebebe, #4BBDFF);
+
+    font-family: 'GmarketSans';
+}
+
+.Main_userInfo{
+    display: flex;
+    padding: 10px;
+    flex-direction: row-reverse;
+    font-size: 1rem;
+
+    & > div {
+        margin-left: 20px;
+    }
+
+    & > .Main_userProfile{
+        background-color: black;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+
+.Main_subTitle{
+    margin-left: 25vw;
+    margin-top: 10vh;
+    width: 50vw;
+    font-size: 1.2rem;
+    & > div {
+        display: flex;
+        margin-bottom: 5px;
+        & > div {
+            font-weight: 700;
+            margin-left: 5px;
+        }
+    }
+}
+
+.Main_thumbnail{
+    width: 50vw;
+    position: relative;
+    margin-left: 25vw;
+
+    & > .Main_thumbnail_image {
+        width: 40vw;
+        margin-left: 5vw;
+        margin-top: 5vh;
+        border-radius: 8px;
+    }
+
+    & > .Main_thumbnail_title {
+        width: 40vw;
+        height: 7vh;
+        font-size: 1rem;
+
+        display: flex;
+        align-items: center;
+
+        margin-left: 5vw;
+        position: absolute;
+        bottom: 0;
+
+        z-index: 1;
+    }
+
+    & > .Main_thumbnail_background {
+        width: 40vw;
+        height: 7vh;
+        margin-left: 5vw;
+        position: absolute;
+        bottom: 0;
+        box-shadow: 0 -8px 20px -5px #c8c8c8;
+        border-radius: 0 0 8px 8px;
+
+        display: flex;
+        align-items: center;
+
+        background-color: white;
+        justify-content: space-between;
+
+        & > div {
+            font-size: 0.7rem;
+        }
+    }
+}
+
+.Main_postMenu{
+    margin-left: 25vw;
+    margin-top: 10vh;
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.Main_posts{
+    margin-left: 25vw;
+    margin-top: 5vh;
+    width: 50vw;
+
+    & > div{
+        margin-bottom: 2vh;
+        display: flex;
+        height: 8vh;
+        position: relative;
+
+        & > .Main_postImage{
+            width: 10vw;
+            border-radius: 8px 0 0 8px;
+        }
+
+        & > .Main_postTitle{
+            width: 40vw;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: -10px 0 20px -5px #ffffff;
+            border-radius: 0 8px 8px 0;
+
+            & > div {
+                font-size: 0.7rem;
+            }
+
+        }
+    }
+
+    padding-bottom: 30vh;
+}
