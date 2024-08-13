@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Viewer } from '@toast-ui/react-editor';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import axios from 'axios';
 import {styled} from "styled-components";
 
 // ./post/id
 function Post() {
     const { id } = useParams(); //post id
+    const {type} = useParams()
     const [post, setPost] = useState(null); //post data
     const [loading, setLoading] = useState(true); //isloading?
     const [error, setError] = useState(null); //iserror?
@@ -13,15 +16,14 @@ function Post() {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`\`/posts/all/${id}`);
+                const response = await axios.get(`/posts/${type}/${id}`);
                 if (response.data.length === 0) {
                     throw new Error('No data found');
                 }
                 setPost(response.data[0]);
-                setLoading(false);
+                setLoading(false)
             } catch (error) {
                 setError(error);
-                setLoading(false);
             }
         };
 
@@ -49,7 +51,7 @@ function Post() {
     const Header = styled.div`
         display: flex;
         justify-content: flex-start;
-        width: 30vw;
+        width: 40vw;
         margin-top: 10vh;
     `
 
@@ -66,7 +68,7 @@ function Post() {
     `
 
     const PostInfo = styled.div`
-        width: 30vw;
+        width: 40vw;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -83,11 +85,11 @@ function Post() {
         margin-bottom: 5vh;
         display: flex;
         justify-content: flex-start;
-        width: 30vw;
+        width: 40vw;
     `
 
     const Horizon = styled.hr`
-        width: 30vw;
+        width: 40vw;
         border: none;
         height: 2px;
         background-image: linear-gradient(90deg, #ff97ee, #4bbdff);
@@ -100,7 +102,7 @@ function Post() {
     const Comment = styled.div`
         font-size: 0.8rem;
         margin-top: 2vh;
-        width: 30vw;
+        width: 40vw;
         
         & > div {
             margin-top: 2vh;
@@ -118,7 +120,7 @@ function Post() {
             resize: none;
             
             padding: 0;
-            width: 26vw;
+            width: 35vw;
             height: 5vh;
         }
         
@@ -134,12 +136,13 @@ function Post() {
             border: 2px solid white;
             margin-top: 2px;
             background: black;
-            width: 4vw;
+            width: 5vw;
             height: 5vh;
-
-            background: linear-gradient(90deg, #ff97ee, #4bbdff);
-            -webkit-background-clip: text;
-            color: #0000;
+            color: white;
+            font-size: 0.8rem;
+            //background: linear-gradient(90deg, #ff97ee, #4bbdff);
+            //-webkit-background-clip: text;
+            //color: #0000;
         }
     `
 
@@ -155,7 +158,12 @@ function Post() {
                     <div>Date. {post.date}</div>
                 </PostInfo>
                 <Horizon/>
-                <PostContent>{post.PostContent}</PostContent>
+                <PostContent>
+                    <Viewer
+                        initialValue={post.PostContent || ''}
+                        theme='dark'
+                    />
+                </PostContent>
                 <Horizon/>
                 <Comment>
                     COMMENT
